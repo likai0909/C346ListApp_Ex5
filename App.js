@@ -1,17 +1,42 @@
 import React from 'react';
-import {View, SectionList, Text, Image, ScrollView, StyleSheet, StatusBar, TouchableOpacity, Button} from 'react-native';
-import Icon from "react-native-vector-icons/FontAwesome6";
+import { View, SectionList, Text, Image, StyleSheet, StatusBar, Button, TouchableOpacity } from 'react-native';
 
-const Menu= [
+const Menu = [
     {
-        title: "Western", bgColor: '#A7C7E7',
-        data: [{name: "Classic Beef Burger", image: "https://truththeory.com/wp-content/uploads/2020/10/Beef-Burger-scaled.jpg", description: "A juicy beef patty served with lettuce, tomato, and cheese, all packed in a soft bun.",price:"6.80" },
-               {name: "Fish and Chips", image:"https://th.bing.com/th/id/OIP.pACcaagp8Lt5W31kLdb4hAHaFj?rs=1&pid=ImgDetMain", description: "Crispy battered fish fillets served with golden fried potato chips and a side of tartar sauce.",price:"7.80"}]
+        title: "Western",
+        bgColor: '#A7C7E7',
+        data: [
+            {
+                name: "Classic Beef Burger",
+                image: "https://truththeory.com/wp-content/uploads/2020/10/Beef-Burger-scaled.jpg",
+                description: "A juicy beef patty served with lettuce, tomato, and cheese, all packed in a soft bun.",
+                price: "6.80",
+            },
+            {
+                name: "Fish and Chips",
+                image: "https://th.bing.com/th/id/OIP.pACcaagp8Lt5W31kLdb4hAHaFj?rs=1&pid=ImgDetMain",
+                description: "Crispy battered fish fillets served with golden fried potato chips and a side of tartar sauce.",
+                price: "7.80",
+            },
+        ],
     },
     {
-        title: "Local", bgColor: '#E6A7A7',
-        data: [{name: "Minced meat noodle", image:"https://4.bp.blogspot.com/-ml44xt0Axyw/UzSdh-LXlDI/AAAAAAAANoQ/yc-Zy88wsdA/s1600/taiwanese+minced+meat+noodle+dish+recipe.jpg", description: "Delicious noodles topped with savory minced pork, soy sauce, and a sprinkle of fresh herbs.",price:"5.80"},
-               {name: "Chicken rice", image:"https://th.bing.com/th/id/R.3aa89eda87655ddb8deaed86497e43d8?rik=m3NRbhQ6XupGKQ&riu=http%3a%2f%2fwww.visitsingapore.com%2fcontent%2fdam%2fdesktop%2fglobal%2fdining-drinks-singapore%2flocal-dishes%2fhainanese-chicken-rice-carousel01-square.jpeg&ehk=rw73zPQiUdGHILU0W5g3ZwhgKDQXt1Jufrk5iDcaemA%3d&risl=&pid=ImgRaw&r=0", description: "Tender poached chicken served with fragrant rice, accompanied by chili sauce and ginger paste.", price:"4.80"}]
+        title: "Local",
+        bgColor: '#E6A7A7',
+        data: [
+            {
+                name: "Minced Meat Noodle",
+                image: "https://4.bp.blogspot.com/-ml44xt0Axyw/UzSdh-LXlDI/AAAAAAAANoQ/yc-Zy88wsdA/s1600/taiwanese+minced+meat+noodle+dish+recipe.jpg",
+                description: "Delicious noodles topped with savory minced pork, soy sauce, and a sprinkle of fresh herbs.",
+                price: "5.80",
+            },
+            {
+                name: "Chicken Rice",
+                image: "https://th.bing.com/th/id/R.3aa89eda87655ddb8deaed86497e43d8?rik=m3NRbhQ6XupGKQ&riu=http%3a%2f%2fwww.visitsingapore.com%2fcontent%2fdam%2fdesktop%2fglobal%2fdining-drinks-singapore%2flocal-dishes%2fhainanese-chicken-rice-carousel01-square.jpeg&ehk=rw73zPQiUdGHILU0W5g3ZwhgKDQXt1Jufrk5iDcaemA%3d&risl=&pid=ImgRaw&r=0",
+                description: "Tender poached chicken served with fragrant rice, accompanied by chili sauce and ginger paste.",
+                price: "4.80",
+            },
+        ],
     },
 ];
 
@@ -22,67 +47,87 @@ const renderItem = ({ item }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 40,
-        backgroundColor: '#F0F0F0',
-        borderWidth: 1,
-        marginTop: 20
+        marginBottom: 20,
+        backgroundColor: '#fff',
+        borderRadius: 15,
+        overflow: 'hidden',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 5,
+        elevation: 3,
     },
-
     image: {
         width: '100%',
-        height: 250,
-        borderRadius: 15, //Round
-        marginTop: 30
-    },
-    text:{
-        fontWeight: 'bold',//Bold
-        fontStyle: 'italic',//Italic
-        marginTop: 50, //Space
-        textAlign: 'center',
-        fontSize: 28,
-        padding: 10
+        height: 200,
     },
     name: {
-        fontWeight: 'bold',//Bold
-        fontStyle: 'italic',
-        textAlign:'center',
-        marginTop: 50,
-        fontSize:24
+        fontWeight: 'bold',
+        fontSize: 20,
+        marginTop: 10,
+        textAlign: 'center',
+        color: '#333',
     },
     description: {
         fontSize: 14,
         color: '#666',
         textAlign: 'center',
-        marginTop: 5,
-        paddingHorizontal: 10,
+        marginHorizontal: 10,
+        marginVertical: 5,
     },
-    button:{
-        marginTop:8,
-        marginBottom:8
+    price: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginVertical: 5,
+        color: '#444',
+    },
+    buttonContainer: {
+        alignItems: 'center',
+        marginVertical: 10,
+    },
+    orderButton: {
+        backgroundColor: '#007BFF',
+        borderRadius: 20,
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+    },
+    orderButtonText: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 16,
     },
     menuHeader: {
         fontWeight: 'bold',
-        fontStyle: 'italic',
-        fontSize: 40,
+        fontSize: 32,
         textAlign: 'center',
-        marginTop: 40,
-        padding: 20,
         color: '#fff',
-        backgroundColor:'black'
+        backgroundColor: '#000',
+        paddingVertical: 20,
     },
-})
+    sectionHeader: {
+        fontWeight: 'bold',
+        fontSize: 24,
+        paddingVertical: 10,
+        textAlign: 'center',
+        color: '#fff',
+    },
+});
 
-function FoodItem({ name, image, description , price}) {
+function FoodItem({ name, image, description, price }) {
     return (
-        <View>
-            <View style={styles.container}>
-                <Text style={styles.name}>{name}</Text>
-                <Image source={{ uri: image }} style={styles.image} />
-                <Text style={styles.description}>{description}</Text>
-                <Text style={{ textAlign: 'center' }}>${price}</Text>
-                <View style={styles.button}>
-                    <Button title="Order" onPress={() => alert('Order placed!')}/>
-                </View>
+        <View style={styles.container}>
+            <Image source={{ uri: image }} style={styles.image} />
+            <Text style={styles.name}>{name}</Text>
+            <Text style={styles.description}>{description}</Text>
+            <Text style={styles.price}>${price}</Text>
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity
+                    style={styles.orderButton}
+                    onPress={() => alert(`${name} order placed!`)}
+                >
+                    <Text style={styles.orderButtonText}>Order</Text>
+                </TouchableOpacity>
             </View>
         </View>
     );
@@ -90,14 +135,15 @@ function FoodItem({ name, image, description , price}) {
 
 const App = () => {
     return (
-        <View>
+        <View style={{ flex: 1, backgroundColor: '#F8F8F8' }}>
             <StatusBar hidden={true} />
             <Text style={styles.menuHeader}>MY MENU</Text>
             <SectionList
                 sections={Menu}
+                keyExtractor={(item, index) => item + index}
                 renderItem={renderItem}
-                renderSectionHeader={({ section: { title, bgColor} }) => (
-                    <Text style={[styles.text, {backgroundColor: bgColor}]}>{title}</Text> // Inline function for section header
+                renderSectionHeader={({ section: { title, bgColor } }) => (
+                    <Text style={[styles.sectionHeader, { backgroundColor: bgColor }]}>{title}</Text>
                 )}
             />
         </View>
